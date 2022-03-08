@@ -3,14 +3,17 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${SERVER}    localhost
-${BROWSER}    Chrome
+${BROWSER}    Firefox
+${ID1}    51
+${ID2}    52
+${ID3}    53
 ${LOGIN PAGE}    http://localhost/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/
-${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/1/preview/
+${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/${ID1}/preview/
 ${CREATE WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/create/
-${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/1/states/
-${WORKFLOWS DOCUMENTS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/1/documents/
+${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/${ID1}/states/
+${WORKFLOWS DOCUMENTS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/${ID1}/documents/
 ${TOGGLE LIST ITEMS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/?_list_mode=items
 ${TOGGLE LIST PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/?_list_mode=list
 ${VALID USERNAME}    staff
@@ -54,17 +57,17 @@ Select All Workflows
 	Go To Workflows Page
 	Wait Until Element Is Visible    xpath://a[@class="btn btn-default btn-sm check-all"]
 	Click Element    xpath://a[@class="btn btn-default btn-sm check-all"]
-	Checkbox Should Be Selected  pk_1
-	Checkbox Should Be Selected  pk_2
-	Checkbox Should Be Selected  pk_6
+	Checkbox Should Be Selected  ${ID1}
+	Checkbox Should Be Selected  ${ID2}
+	Checkbox Should Be Selected  ${ID3}
 	Location Should Contain    ${WORKFLOWS PAGE}
 	
 Deselect All Workflows
 	Wait Until Element Is Visible    xpath://a[@class="btn btn-default btn-sm check-all"]
 	Click Element    xpath://a[@class="btn btn-default btn-sm check-all"]
-	Checkbox Should Not Be Selected  pk_1
-	Checkbox Should Not Be Selected  pk_2
-	Checkbox Should Not Be Selected  pk_6
+	Checkbox Should Not Be Selected  ${ID1}
+	Checkbox Should Not Be Selected  ${ID2}
+	Checkbox Should Not Be Selected  ${ID3}
 	Location Should Contain    ${WORKFLOWS PAGE}
 	
 Toggle List View

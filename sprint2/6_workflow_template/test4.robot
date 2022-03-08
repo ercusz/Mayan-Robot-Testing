@@ -3,18 +3,19 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${SERVER}    localhost
-${BROWSER}    Chrome
+${BROWSER}    Firefox
+${ID1}    51
 ${LOGIN PAGE}    http://localhost/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/
-${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/1/preview/
-${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_templates/1/states/
+${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/${ID1}/preview/
+${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_templates/${ID1}/states/
 ${CREATE WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/create/
-${TRANSITIONS WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/1/transitions/
-${EVENTS WORKFLOWS PAGE}    http://localhost/#/events/object/document_states/workflow/1/events/
-${WORKFLOWS DOCUMENT TYPE PAGE}    http://localhost/#/workflows/workflow_templates/1/document_types/
+${TRANSITIONS WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/${ID1}/transitions/
+${EVENTS WORKFLOWS PAGE}    http://localhost/#/events/object/document_states/workflow/${ID1}/events/
+${WORKFLOWS DOCUMENT TYPE PAGE}    http://localhost/#/workflows/workflow_templates/${ID1}/document_types/
 ${WORKFLOWS TEMPLATES}    http://localhost/#/workflows/workflow_templates/
-${COPY WORKFLOWS PAGE}    http://localhost/#/object/document_states/workflow/1/copy/
+${COPY WORKFLOWS PAGE}    http://localhost/#/object/document_states/workflow/${ID1}/copy/
 ${VALID USERNAME}    staff
 ${VALID PASSWORD}    iLoveCP@KKU
 
@@ -26,8 +27,8 @@ Go to Transitions
 	Login To Home Page
 	Go To Preview Workflows Page
 	Go to Workflow Templates
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/1/transitions/"]
-	Click Link    xpath://a[@href="/workflows/workflow_templates/1/transitions/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/transitions/"]
+	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/transitions/"]
 	Location Should Contain    ${TRANSITIONS WORKFLOWS PAGE}
 	[Teardown]    Close Browser
 	
@@ -36,8 +37,8 @@ Go to Preview
 	Login To Home Page
 	Go To Preview Workflows Page
 	Go to Workflow Templates
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/1/preview/"]
-	Click Link    xpath://a[@href="/workflows/workflow_templates/1/preview/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
+	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
 	Location Should Contain    ${PREVIEW WORKFLOWS PAGE}
 	[Teardown]    Close Browser
 	
@@ -46,8 +47,8 @@ Go to Document Type
 	Login To Home Page
 	Go To Preview Workflows Page
 	Go to Workflow Templates
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/1/document_types/"]
-	Click Link    xpath://a[@href="/workflows/workflow_templates/1/document_types/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/document_types/"]
+	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/document_types/"]
 	Location Should Contain    ${WORKFLOWS DOCUMENT TYPE PAGE}
 	[Teardown]    Close Browser
 	
@@ -56,8 +57,8 @@ Go to States
 	Login To Home Page
 	Go To Preview Workflows Page
 	Go to Workflow Templates
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/1/states/"]
-	Click Link    xpath://a[@href="/workflows/workflow_templates/1/states/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/states/"]
+	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/states/"]
 	Location Should Contain    ${WORKFLOWS STATES PAGE}
 	[Teardown]    Close Browser
 	
@@ -82,8 +83,8 @@ Go To Preview Workflows Page
 	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
 	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
 	Location Should Contain    ${WORKFLOWS PAGE}
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/1/preview/"]
-	Click Link    xpath://a[@href="/workflows/workflow_templates/1/preview/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
+	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
 	Location Should Contain    ${PREVIEW WORKFLOWS PAGE}
 	
 Go to Workflow Templates

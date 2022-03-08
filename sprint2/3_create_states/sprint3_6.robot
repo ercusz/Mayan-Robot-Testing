@@ -6,9 +6,10 @@ Library     SeleniumLibrary
 ${USER_ID}     staff
 ${USER_PASS}   iLoveCP@KKU
 ${BROWSER}    Firefox
-${CREATE_FIRST_STATE}    xpath://div[2]/a[@href="/workflows/workflow_templates/97/states/create/"]
-${CREATE_NEXT_STATE}    xpath://li[13]/a[@href="/workflows/workflow_templates/97/states/create/"]
-${URL_BROWSER}    http://localhost/#/workflows/workflow_templates/97/states/
+${ID1}    51
+${CREATE_FIRST_STATE}    xpath://div[2]/a[@href="/workflows/workflow_templates/${ID1}/states/create/"]
+${CREATE_NEXT_STATE}    xpath://li[13]/a[@href="/workflows/workflow_templates/${ID1}/states/create/"]
+${URL_BROWSER}    http://localhost/#/workflows/workflow_templates/${ID1}/states/
 
 *** Test Case ***
 

@@ -3,14 +3,17 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${SERVER}    localhost
-${BROWSER}    firefox
+${BROWSER}    Firefox
+${ID1}    51
+${ID2}    52
+${ID3}    53
 ${LOGIN PAGE}    http://${SERVER}/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/
-${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/2/preview/
+${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/${ID1}/preview/
 ${CREATE WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/create/
-${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/2/states/
-${WORKFLOWS DOCUMENTS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/2/documents/
+${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/${ID1}/states/
+${WORKFLOWS DOCUMENTS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/${ID1}/documents/
 ${WORKFLOWS TEMPLATES}      http://localhost/#/workflows/workflow_templates/    
 ${DELAY}    1
 ${VALID USERNAME}    staff
@@ -35,8 +38,8 @@ Go To Workflows Page
 	Location Should Contain    ${WORKFLOWS PAGE}     
 
 Preview Workflows
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/2/preview/"]  ${DELAY} 
-	Click Link    xpath://a[@href="/workflows/workflow_templates/2/preview/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]  ${DELAY} 
+	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
 	Location Should Contain    ${PREVIEW WORKFLOWS PAGE}
 
 Go to Workflow Templates
@@ -48,23 +51,23 @@ Go to Workflow Templates
 
 Go to Workflow Delete
     Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/5/delete/"]
-    Click Link    xpath://a[@href="/workflows/workflow_templates/5/delete/"]
+    Click Link    xpath://a[@href="/workflows/workflow_templates/${ID2}/delete/"]
     Click Button    class:btn btn-primary
     Location Should Contain    ${WORKFLOWS TEMPLATES} 
     Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/5/delete/"]
-    Click Link    xpath://a[@href="/workflows/workflow_templates/5/delete/"]
+    Click Link    xpath://a[@href="/workflows/workflow_templates/${ID2}/delete/"]
     Click Button    class:btn btn-danger
     Location Should Contain    ${WORKFLOWS TEMPLATES} 
 
 Go to Workflow launch
     Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/1/launch/"]    
-    Click Link    xpath://a[@href="/workflows/workflow_templates/1/launch/"]
+    Click Link    xpath://a[@href="/workflows/workflow_templates/${ID3}/launch/"]
     Click Button    class:btn btn-danger
     Location Should Contain    ${WORKFLOWS TEMPLATES}
 
 Go to Workflow launch
     Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/1/edit/"]
-    Click Link    xpath://a[@href="/workflows/workflow_templates/1/edit/"]
+    Click Link    xpath://a[@href="/workflows/workflow_templates/${ID3}/edit/"]
     Location Should Contain    ${CREATE WORKFLOWS PAGE}
     Input Text    id_label    แก้ไขครั้งที่หนึ่ง
     Input Text    id_internal_name    ทดสอบครั้งที่หนึ่ง

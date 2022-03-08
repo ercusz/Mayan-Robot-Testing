@@ -6,16 +6,18 @@ ${BROWSER}    Firefox
 ${SERVER}    localhost
 ${VALID USERNAME}    staff
 ${VALID PASSWORD}    iLoveCP@KKU
+${ID1}    51
+${D_ID1}    51
 ${LOGIN PAGE}    http://${SERVER}/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/
-${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/2/preview/
+${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/${ID1}/preview/
 ${CREATE WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/create/
-${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/2/states/
-${WORKFLOWS DOCUMENTS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/2/documents/
-${WORKFLOWS DOCUMENTS INSIDE}    http://localhost/#/documents/documents/3/preview/
-${WORKFLOWS DOCUMENTS TRANSITIONS}    http://localhost/#/workflows/documents/3/workflows/
-${WORKFLOWS DOCUMENTS SELECT TRANSITIONS}    http://localhost/#/workflows/documents/workflows/3/transitions/select/
+${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/${ID1}/states/
+${WORKFLOWS DOCUMENTS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/${ID1}/documents/
+${WORKFLOWS DOCUMENTS INSIDE}    http://localhost/#/documents/documents/${D_ID1}/preview/
+${WORKFLOWS DOCUMENTS TRANSITIONS}    http://localhost/#/workflows/documents/${D_ID1}/workflows/
+${WORKFLOWS DOCUMENTS SELECT TRANSITIONS}    http://localhost/#/workflows/documents/workflows/${D_ID1}/transitions/select/
 
 *** Test Cases ***
 Set Delay
@@ -39,23 +41,23 @@ Go To Workflows Page
 	Location Should Contain    ${WORKFLOWS PAGE} 
 
 Workflow Documents
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/2/documents/"]
-	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/2/documents/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/documents/"]
+	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/documents/"]
 	Location Should Contain    ${WORKFLOWS DOCUMENTS PAGE}
 	
 Go to Documents #03
-    Wait Until Element Is Visible    xpath://a[@href="/documents/documents/3/preview/"] 
-    Click Link    xpath://a[@href="/documents/documents/3/preview/"]
+    Wait Until Element Is Visible    xpath://a[@href="/documents/documents/${D_ID1}/preview/"] 
+    Click Link    xpath://a[@href="/documents/documents/${D_ID1}/preview/"]
     Location Should Contain    ${WORKFLOWS DOCUMENTS INSIDE}
 
 Go To Workflow Documents
-    Wait Until Element Is Visible    xpath://a[@href="/workflows/documents/3/workflows/"] 
-    Click Link    xpath://a[@href="/workflows/documents/3/workflows/"]
+    Wait Until Element Is Visible    xpath://a[@href="/workflows/documents/${D_ID1}/workflows/"] 
+    Click Link    xpath://a[@href="/workflows/documents/${D_ID1}/workflows/"]
     Location Should Contain    ${WORKFLOWS DOCUMENTS TRANSITIONS}
 
 Go To Select Transitions
-    Wait Until Element Is Visible    xpath://a[@href="/workflows/documents/workflows/3/transitions/select/"] 
-    Click Link    xpath://a[@href="/workflows/documents/workflows/3/transitions/select/"]
+    Wait Until Element Is Visible    xpath://a[@href="/workflows/documents/workflows/${D_ID1}/transitions/select/"] 
+    Click Link    xpath://a[@href="/workflows/documents/workflows/${D_ID1}/transitions/select/"]
     Location Should Contain    ${WORKFLOWS DOCUMENTS SELECT TRANSITIONS}
     
 Choose Transitions
@@ -63,7 +65,7 @@ Choose Transitions
     Click Element    xpath=//select[@id="id_transition"]
     Select From List by Index    xpath=//select[@name="transition"]
     Click Button    submit
-    Location Should Contain    http://localhost/#/workflows/documents/workflows/3/transitions/11/execute/
+    Location Should Contain    http://localhost/#/workflows/documents/workflows/${D_ID1}/transitions/11/execute/
 
 Execute transition    
     Input Text    id_comment    หิวข้าวมากๆครับ

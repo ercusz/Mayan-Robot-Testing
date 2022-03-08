@@ -30,3 +30,4 @@ __pycache__
 .jython_cache
 *.log
 selenium-screenshot-*.png
+*.bak
