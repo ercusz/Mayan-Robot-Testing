@@ -3,7 +3,8 @@ import requests
 import json
 
 res = requests.get('http://localhost/api/v4/workflow_templates/')
-
+data = json.load(res)
+print(data)
 while True:
     opt = int(input("Select option> "))
     if opt == 1:

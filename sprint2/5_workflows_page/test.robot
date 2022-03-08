@@ -13,8 +13,8 @@ ${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_runtime_proxie
 ${WORKFLOWS DOCUMENTS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/1/documents/
 ${TOGGLE LIST ITEMS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/?_list_mode=items
 ${TOGGLE LIST PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/?_list_mode=list
-${VALID USERNAME}    admin
-${VALID PASSWORD}    TrwquxR9xc
+${VALID USERNAME}    staff
+${VALID PASSWORD}    iLoveCP@KKU
 
 
 *** Test Cases ***

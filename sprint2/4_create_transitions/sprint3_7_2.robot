@@ -3,8 +3,8 @@ Library     SeleniumLibrary
 
 
 *** Variables ***
-${USER_ID}     admin
-${USER_PASS}   RJUg5auXgf
+${USER_ID}     staff
+${USER_PASS}   iLoveCP@KKU
 ${BROWSER}    Firefox
 ${URL_BACHELOR}   /workflows/workflow_templates/1/preview/
 ${CREATE_TRANSITION}    xpath://div[2]/a[@href="/workflows/workflow_templates/97/transitions/create/"]

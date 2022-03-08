@@ -15,8 +15,8 @@ ${EVENTS WORKFLOWS PAGE}    http://localhost/#/events/object/document_states/wor
 ${WORKFLOWS DOCUMENT TYPE PAGE}    http://localhost/#/workflows/workflow_templates/1/document_types/
 ${WORKFLOWS TEMPLATES}    http://localhost/#/workflows/workflow_templates/
 ${COPY WORKFLOWS PAGE}    http://localhost/#/object/document_states/workflow/1/copy/
-${VALID USERNAME}    admin
-${VALID PASSWORD}    TrwquxR9xc
+${VALID USERNAME}    staff
+${VALID PASSWORD}    iLoveCP@KKU
 
 
 *** Test Cases ***
