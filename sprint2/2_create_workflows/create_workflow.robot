@@ -150,6 +150,7 @@ Create Workflow Empty Both Date #TC009
     Input Workflow Empty Both Date Test
     Location Should Contain    ${WORKFLOWS PAGE}
     Wait Until Element Contains    xpath://div[@class="toast-message"]    สร้าง เวิร์กโฟลว์ สำเร็จแล้ว
+    Get All Links
     [Teardown]  Close Browser
 
 Create Workflow Exist Label #TC010
