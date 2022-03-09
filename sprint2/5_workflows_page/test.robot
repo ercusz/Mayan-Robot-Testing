@@ -1,5 +1,5 @@
 *** Settings ***
-Library    SeleniumLibrary
+Library    SeleniumLibrary    timeout=3
 
 *** Variables ***
 ${SERVER}    localhost
@@ -24,13 +24,14 @@ ${VALID PASSWORD}    iLoveCP@KKU
 *** Test Cases ***
 
 Login And Go To Workflows Page
+    Set Selenium Speed    0.3
 	Open Login Page
 	Login as a admin
 	Go To Workflows Page
 	
 Preview Workflows
 	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
-	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
+	Click Element    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
 	Location Should Contain    ${PREVIEW WORKFLOWS PAGE}
 	[Teardown]    Close Browser
 	
@@ -39,7 +40,7 @@ Workflow Documents
 	Login as a admin
 	Go To Workflows Page
 	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/documents/"]
-	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/documents/"]
+	Click Element    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/documents/"]
 	Location Should Contain    ${WORKFLOWS DOCUMENTS PAGE}
 	[Teardown]    Close Browser
 
@@ -48,7 +49,7 @@ Workflow States
 	Login as a admin
 	Go To Workflows Page
 	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/states/"]
-	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/states/"]
+	Click Element    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/states/"]
 	Location Should Contain    ${WORKFLOWS STATES PAGE}
 	[Teardown]    Close Browser
 	
@@ -58,19 +59,19 @@ Select All Workflows
 	Go To Workflows Page
 	Wait Until Element Is Visible    xpath://a[@class="btn btn-default btn-sm check-all"]
 	Click Element    xpath://a[@class="btn btn-default btn-sm check-all"]
-	Checkbox Should Be Selected  ${ID1}
-	Checkbox Should Be Selected  ${ID2}
-	Checkbox Should Be Selected  ${ID3}
-	Checkbox Should Be Selected  ${ID4}
+	Checkbox Should Be Selected  xpath://input[@name="pk_${ID1}"]
+	Checkbox Should Be Selected  xpath://input[@name="pk_${ID2}"]
+	Checkbox Should Be Selected  xpath://input[@name="pk_${ID3}"]
+	Checkbox Should Be Selected  xpath://input[@name="pk_${ID4}"]
 	Location Should Contain    ${WORKFLOWS PAGE}
 	
 Deselect All Workflows
 	Wait Until Element Is Visible    xpath://a[@class="btn btn-default btn-sm check-all"]
 	Click Element    xpath://a[@class="btn btn-default btn-sm check-all"]
-	Checkbox Should Not Be Selected  ${ID1}
-	Checkbox Should Not Be Selected  ${ID2}
-	Checkbox Should Not Be Selected  ${ID3}
-	Checkbox Should Not Be Selected  ${ID4}
+	Checkbox Should Not Be Selected  xpath://input[@name="pk_${ID1}"]
+	Checkbox Should Not Be Selected  xpath://input[@name="pk_${ID2}"]
+	Checkbox Should Not Be Selected  xpath://input[@name="pk_${ID3}"]
+	Checkbox Should Not Be Selected  xpath://input[@name="pk_${ID4}"]
 	Location Should Contain    ${WORKFLOWS PAGE}
 	
 Toggle List View
@@ -99,8 +100,8 @@ Login as a admin
 	
 Go To Workflows Page
 	Wait Until Element Is Visible    xpath://a[@aria-controls="collapse-workflows"]
-	Click Link    xpath://a[@aria-controls="collapse-workflows"]
+	Double Click Element    xpath://a[@aria-controls="collapse-workflows"]
 	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
-	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
+	Double Click Element    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
 	Location Should Contain    ${WORKFLOWS PAGE}
 	
