@@ -7,7 +7,7 @@ ${SERVER}    localhost
 ${VALID USERNAME}    staff
 ${VALID PASSWORD}    iLoveCP@KKU
 ${ID1}    64
-${D_ID1}    21
+${D_ID1}    23
 ${LOGIN PAGE}    http://${SERVER}/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${DOCUMENT TYPES PAGE}    http://localhost/#/documents/document_types/
@@ -97,17 +97,15 @@ Go To Workflow Document Page
     Click Element    xpath://a[@href="/documents/documents/${D_ID1}/preview/"]
     Wait Until Element Is Visible    xpath://a[@href="/workflows/documents/${D_ID1}/workflows/"]
     Click Element    xpath://a[@href="/workflows/documents/${D_ID1}/workflows/"]
-    Wait Until Element Is Visible    xpath://a[@href="/workflows/documents/workflows/${D_ID1}/transitions/select/"]
-    Click Element    xpath://a[@href="/workflows/documents/workflows/${D_ID1}/transitions/select/"]
-    Location Should Be    http://localhost/#/workflows/documents/workflows/${D_ID1}/transitions/select/
+    Wait Until Element Is Visible    xpath://a[contains(text(),"Transition")]
+    Click Element    xpath://a[contains(text(),"Transition")]
 
 Choose Transitions
     Wait Until Element Is Visible    xpath=//select[@id="id_transition"]
     Click Element    xpath=//select[@id="id_transition"]
-    Select From List By Label    เส้นทางถัดไป
+    Select From List By Index    xpath=//select[@id="id_transition"]    1
     Click Button    submit
     Wait Until Element Is Visible    xpath=//textarea[@name="comment"]
     Click Element    xpath=//textarea[@name="comment"]
     Wait Until Element Is Visible    xpath://button[@class="btn btn-primary btn-hotkey-default"]
     Click Button    xpath://button[@class="btn btn-primary btn-hotkey-default"]
-    Location Should Be    http://localhost/#/workflows/documents/workflows/${D_ID1}/

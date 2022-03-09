@@ -5,7 +5,7 @@ Library    SeleniumLibrary  timeout=3
 ${SERVER}    localhost
 ${BROWSER}    Firefox
 ${ID1}    64
-${ID2}    65
+${ID2}    67
 ${ID3}    66
 ${LOGIN PAGE}    http://${SERVER}/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/

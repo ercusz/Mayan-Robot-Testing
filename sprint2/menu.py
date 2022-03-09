@@ -77,7 +77,6 @@ def main():
             update_id()
             os.system('python -m robot 6_workflow_template/test4.robot')
             os.system('python -m robot 6_workflow_template/crudtest.robot')
-            os.system('python -m robot 3_create_states/sprint3_6.robot')
         elif opt == '7':
             update_id()
             os.system('python -m robot 7_doc_trans/test_doctran.robot')
