@@ -6,10 +6,10 @@ Library     SeleniumLibrary
 ${USER_ID}     staff
 ${USER_PASS}   iLoveCP@KKU
 ${BROWSER}    Firefox
-${ID1}    51
+${ID1}    64
 ${URL_BACHELOR}   /workflows/workflow_templates/1/preview/
 ${CREATE_TRANSITION}    xpath://div[2]/a[@href="/workflows/workflow_templates/${ID1}/transitions/create/"]
-${TRANSITION}    xpath://li[4]/a[@href="/workflows/workflow_templates/${ID1}/transitions/"]
+${TRANSITION}    xpath://li/a[@href="/workflows/workflow_templates/${ID1}/transitions/"]
 ${STATE}    http://localhost/#/workflows/workflow_templates/${ID1}/states/
 ${LOCATION_TRANSITION}    http://localhost/#/workflows/workflow_templates/${ID1}/transitions/
 ${CREATE_NEXT_TRANSITION}    xpath://li[13]/a[@href="/workflows/workflow_templates/${ID1}/transitions/create/"]

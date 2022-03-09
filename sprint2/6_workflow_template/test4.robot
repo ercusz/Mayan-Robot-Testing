@@ -4,7 +4,7 @@ Library    SeleniumLibrary
 *** Variables ***
 ${SERVER}    localhost
 ${BROWSER}    Firefox
-${ID1}    51
+${ID1}    64
 ${LOGIN PAGE}    http://localhost/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/
@@ -23,6 +23,7 @@ ${VALID PASSWORD}    iLoveCP@KKU
 *** Test Cases ***
 
 Go to Transitions 
+	Set Selenium Speed  0.3
 	Open Login Page
 	Login To Home Page
 	Go To Preview Workflows Page
@@ -79,18 +80,18 @@ Login To Home Page
 	
 Go To Preview Workflows Page
 	Wait Until Element Is Visible    xpath://a[@aria-controls="collapse-workflows"]
-	Click Link    xpath://a[@aria-controls="collapse-workflows"]
+	Double Click Element    xpath://a[@aria-controls="collapse-workflows"]
 	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
-	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
+	Click Element    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
 	Location Should Contain    ${WORKFLOWS PAGE}
 	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
-	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
+	Click Element    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
 	Location Should Contain    ${PREVIEW WORKFLOWS PAGE}
 	
 Go to Workflow Templates
     Wait Until Element Is Visible  id:menu-actions
     Click Element    xpath=//*[@id="menu-actions"]  
     Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/"]
-    Click Link    xpath://a[@href="/workflows/workflow_templates/"]
+    Click Element    xpath://a[@href="/workflows/workflow_templates/"]
     Location Should Contain    ${WORKFLOWS TEMPLATES} 
 	

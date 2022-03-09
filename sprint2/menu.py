@@ -1,7 +1,6 @@
 import os
 import requests
 import fileinput
-import re
 
 def fetch_data():
     url = 'http://localhost/api/v4/workflow_templates/'
@@ -42,15 +41,20 @@ def replace_text(id_list):
                 prefix1 = "${ID1}    "
                 prefix2 = "${ID2}    "
                 prefix3 = "${ID3}    "
-                prefix4 = "${D_ID1}    "
+                prefix4 = "${ID4}    "
+                # prefix5 = "${D_ID1}    "
                 if line.startswith(prefix1):
                     line = prefix1 + str(id_list[0]) + "\n"
                 elif line.startswith(prefix2):
                     line = prefix2 + str(id_list[1]) + "\n"
                 elif line.startswith(prefix3):
                     line = prefix3 + str(id_list[2]) + "\n"
-                elif line.startswith(prefix4):
-                    line = prefix4 + str(id_list[0]) + "\n"
+                
+                if (len(id_list) > 3):
+                    if line.startswith(prefix4):
+                        line = prefix4 + str(id_list[3]) + "\n"
+                # elif line.startswith(prefix5):
+                #     line = prefix5 + str(id_list[0]) + "\n"
                 print(line, end='')
 
 def main():

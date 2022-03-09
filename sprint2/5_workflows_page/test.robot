@@ -4,9 +4,10 @@ Library    SeleniumLibrary
 *** Variables ***
 ${SERVER}    localhost
 ${BROWSER}    Firefox
-${ID1}    51
-${ID2}    52
-${ID3}    53
+${ID1}    64
+${ID2}    65
+${ID3}    66
+${ID4}    67
 ${LOGIN PAGE}    http://localhost/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/
@@ -28,8 +29,8 @@ Login And Go To Workflows Page
 	Go To Workflows Page
 	
 Preview Workflows
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/1/preview/"]
-	Click Link    xpath://a[@href="/workflows/workflow_templates/1/preview/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
+	Click Link    xpath://a[@href="/workflows/workflow_templates/${ID1}/preview/"]
 	Location Should Contain    ${PREVIEW WORKFLOWS PAGE}
 	[Teardown]    Close Browser
 	
@@ -37,8 +38,8 @@ Workflow Documents
 	Open Login Page
 	Login as a admin
 	Go To Workflows Page
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/1/documents/"]
-	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/1/documents/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/documents/"]
+	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/documents/"]
 	Location Should Contain    ${WORKFLOWS DOCUMENTS PAGE}
 	[Teardown]    Close Browser
 
@@ -46,8 +47,8 @@ Workflow States
 	Open Login Page
 	Login as a admin
 	Go To Workflows Page
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/1/states/"]
-	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/1/states/"]
+	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/states/"]
+	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/${ID1}/states/"]
 	Location Should Contain    ${WORKFLOWS STATES PAGE}
 	[Teardown]    Close Browser
 	
@@ -60,6 +61,7 @@ Select All Workflows
 	Checkbox Should Be Selected  ${ID1}
 	Checkbox Should Be Selected  ${ID2}
 	Checkbox Should Be Selected  ${ID3}
+	Checkbox Should Be Selected  ${ID4}
 	Location Should Contain    ${WORKFLOWS PAGE}
 	
 Deselect All Workflows
@@ -68,6 +70,7 @@ Deselect All Workflows
 	Checkbox Should Not Be Selected  ${ID1}
 	Checkbox Should Not Be Selected  ${ID2}
 	Checkbox Should Not Be Selected  ${ID3}
+	Checkbox Should Not Be Selected  ${ID4}
 	Location Should Contain    ${WORKFLOWS PAGE}
 	
 Toggle List View
@@ -101,4 +104,3 @@ Go To Workflows Page
 	Click Link    xpath://a[@href="/workflows/workflow_runtime_proxies/"]
 	Location Should Contain    ${WORKFLOWS PAGE}
 	
-
