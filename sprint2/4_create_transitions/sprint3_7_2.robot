@@ -6,7 +6,7 @@ Library     SeleniumLibrary
 ${USER_ID}     staff
 ${USER_PASS}   iLoveCP@KKU
 ${BROWSER}    Firefox
-${ID1}    64
+${ID1}    1
 ${URL_BACHELOR}   /workflows/workflow_templates/1/preview/
 ${CREATE_TRANSITION}    xpath://div[2]/a[@href="/workflows/workflow_templates/${ID1}/transitions/create/"]
 ${TRANSITION}    xpath://li/a[@href="/workflows/workflow_templates/${ID1}/transitions/"]
@@ -23,8 +23,10 @@ Create Transitions
     Login as a admin
     Wait Until Element Is Visible  id:sidebar
     Click Link    ${TRANSITION}
-    Wait Until Element Is Visible  ${CREATE_TRANSITION}
-    Click Link    ${CREATE_TRANSITION}
+    Wait Until Element Is Visible  id:menu-actions
+    Click Element    xpath=//*[@id="menu-actions"]
+    Wait Until Element Is Visible  ${CREATE_NEXT_TRANSITION}
+    Click Link    ${CREATE_NEXT_TRANSITION}
     Create Transitions Test
     Location Should Contain    ${LOCATION_TRANSITION}
     Element Text Should Be    xpath://div[@class="toast-message"]    สร้าง Workflow transition สำเร็จแล้ว
@@ -58,7 +60,6 @@ Create Transitions Test
     Click Element    xpath=//select[@id="id_origin_state"]
     Select From List by Index    xpath=//select[@id="id_origin_state"]    1
     Select From List by Index  xpath=//select[@name="destination_state"]    2
-    Input Text    id_condition_template    คอมเมนต์ทดสอบเส้นเชื่อมต่อ
     Click Button    submit
 
 Create Next Transitions Test
@@ -67,5 +68,4 @@ Create Next Transitions Test
     Click Element    xpath=//select[@id="id_origin_state"]
     Select From List by Index    xpath=//select[@id="id_origin_state"]    2
     Select From List by Index  xpath=//select[@name="destination_state"]    1
-    Input Text    id_condition_template    คอมเมนต์ทดสอบเส้นเชื่อมต่ออีกครั้ง
     Click Button    submit
