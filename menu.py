@@ -133,11 +133,10 @@ _ _  _    ___ _  _ ____    _  _ ____ _   _ ____ _  _    ____ _  _ ___  _ ____ __
             update_id()
             os.system('python -m robot card2/8_acls/Test_ACL.robot')
         elif opt == '9':
-            update_id()
-            os.system('python -m robot card2/8_acls/Test_ACL.robot')
-        elif opt == '10':
-            update_id()
             os.system('python -m robot card11/9_create_theme/create_theme_test.robot')
+        elif opt == '10':
+            os.system('python -m robot card11/10_user_theme/user_test.robot')
+            os.system('python -m robot card11/10_user_theme/user_theme.robot')
         elif opt == 'set-id':
             update_id()
         elif opt == 'clean':
