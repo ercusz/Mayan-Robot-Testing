@@ -56,12 +56,13 @@ def set_docs_id():
 
 def replace_text(id_list, doc_id, labels):
     file_names = [
-        'sprint2/3_create_states/sprint3_6.robot', 
-        'sprint2/4_create_transitions/sprint3_7_2.robot',
-        'sprint2/5_workflows_page/test.robot',
-        'sprint2/6_workflow_template/crudtest.robot',
-        'sprint2/6_workflow_template/test4.robot',
-        'sprint2/7_doc_trans/test_doctran.robot'
+        'card2/3_create_states/sprint3_6.robot', 
+        'card2/4_create_transitions/sprint3_7_2.robot',
+        'card2/5_workflows_page/test.robot',
+        'card2/6_workflow_template/crudtest.robot',
+        'card2/6_workflow_template/test4.robot',
+        'card2/7_doc_trans/test_doctran.robot',
+        'card2/8_acls/Test_ACL.robot'
     ]
 
     for filename in file_names:
@@ -73,6 +74,7 @@ def replace_text(id_list, doc_id, labels):
                 prefix4 = "${ID4}    "
                 prefix5 = "${D_ID1}    "
                 prefix6 = "${LABEL1}    "
+                prefix7 = "${ID_NEXT}    "
                 if line.startswith(prefix1):
                     line = prefix1 + str(id_list[0]) + "\n"
                 elif line.startswith(prefix2):
@@ -81,6 +83,8 @@ def replace_text(id_list, doc_id, labels):
                     line = prefix3 + str(id_list[2]) + "\n"
                 elif line.startswith(prefix6):
                     line = prefix6 + str(labels[0]) + "\n"
+                elif line.startswith(prefix7):
+                    line = prefix7 + str(max(id_list)+1) + "\n"
                 
                 if (len(id_list) > 3):
                     if line.startswith(prefix4):
@@ -106,25 +110,28 @@ _ _  _    ___ _  _ ____    _  _ ____ _   _ ____ _  _    ____ _  _ ___  _ ____ __
     while True:
         opt = input("Select option> ")
         if opt == '1':
-            os.system('python -m robot sprint2/1_signin/login_test.robot')
+            os.system('python -m robot card2/1_signin/login_test.robot')
         elif opt == '2':
-            os.system('python -m robot sprint2/2_create_workflows/create_workflow.robot')
+            os.system('python -m robot card2/2_create_workflows/create_workflow.robot')
         elif opt == '3':
             update_id()
-            os.system('python -m robot sprint2/3_create_states/sprint3_6.robot')
+            os.system('python -m robot card2/3_create_states/sprint3_6.robot')
         elif opt == '4':
             update_id()
-            os.system('python -m robot sprint2/4_create_transitions/sprint3_7_2.robot')
+            os.system('python -m robot card2/4_create_transitions/sprint3_7_2.robot')
         elif opt == '5':
             update_id()
-            os.system('python -m robot sprint2/5_workflows_page/test.robot')
+            os.system('python -m robot card2/5_workflows_page/test.robot')
         elif opt == '6':
             update_id()
-            os.system('python -m robot sprint2/6_workflow_template/test4.robot')
-            os.system('python -m robot sprint2/6_workflow_template/crudtest.robot')
+            os.system('python -m robot card2/6_workflow_template/test4.robot')
+            os.system('python -m robot card2/6_workflow_template/crudtest.robot')
         elif opt == '7':
             update_id()
-            os.system('python -m robot sprint2/7_doc_trans/test_doctran.robot')
+            os.system('python -m robot card2/7_doc_trans/test_doctran.robot')
+        elif opt == '8':
+            update_id()
+            os.system('python -m robot card2/8_acls/Test_ACL.robot')
         elif opt == 'set-id':
             update_id()
         elif opt == 'clean':
