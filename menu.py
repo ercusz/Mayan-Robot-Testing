@@ -1,6 +1,9 @@
-import os
-import requests
 import fileinput
+import os
+
+import ascii_magic
+import requests
+
 
 def fetch_data():
     url = 'http://localhost/api/v4/workflow_templates/'
@@ -27,12 +30,12 @@ def update_id():
 
 def replace_text(id_list):
     file_names = [
-        '3_create_states/sprint3_6.robot', 
-        '4_create_transitions/sprint3_7_2.robot',
-        '5_workflows_page/test.robot',
-        '6_workflow_template/crudtest.robot',
-        '6_workflow_template/test4.robot',
-        '7_doc_trans/test_doctran.robot'
+        'sprint2/3_create_states/sprint3_6.robot', 
+        'sprint2/4_create_transitions/sprint3_7_2.robot',
+        'sprint2/5_workflows_page/test.robot',
+        'sprint2/6_workflow_template/crudtest.robot',
+        'sprint2/6_workflow_template/test4.robot',
+        'sprint2/7_doc_trans/test_doctran.robot'
     ]
 
     for filename in file_names:
@@ -58,28 +61,40 @@ def replace_text(id_list):
                 print(line, end='')
 
 def main():
+    # Dobby's Adventures in the Mayan Empire
+    txt = '''
+___  ____ ___  ___  _   _ . ____    ____ ___  _  _ ____ _  _ ___ _  _ ____ ____ ____    
+|  \ |  | |__] |__]  \_/  ' [__     |__| |  \ |  | |___ |\ |  |  |  | |__/ |___ [__     
+|__/ |__| |__] |__]   |     ___]    |  | |__/  \/  |___ | \|  |  |__| |  \ |___ ___]    
+                                                                                        
+_ _  _    ___ _  _ ____    _  _ ____ _   _ ____ _  _    ____ _  _ ___  _ ____ ____      
+| |\ |     |  |__| |___    |\/| |__|  \_/  |__| |\ |    |___ |\/| |__] | |__/ |___      
+| | \|     |  |  | |___    |  | |  |   |   |  | | \|    |___ |  | |    | |  \ |___      
+'''
+    print(txt)
+
     while True:
         opt = input("Select option> ")
         if opt == '1':
-            os.system('python -m robot 1_signin/login_test.robot')
+            os.system('python -m robot sprint2/1_signin/login_test.robot')
         elif opt == '2':
-            os.system('python -m robot 2_create_workflows/create_workflow.robot')
+            os.system('python -m robot sprint2/2_create_workflows/create_workflow.robot')
         elif opt == '3':
             update_id()
-            os.system('python -m robot 3_create_states/sprint3_6.robot')
+            os.system('python -m robot sprint2/3_create_states/sprint3_6.robot')
         elif opt == '4':
             update_id()
-            os.system('python -m robot 4_create_transitions/sprint3_7_2.robot')
+            os.system('python -m robot sprint2/4_create_transitions/sprint3_7_2.robot')
         elif opt == '5':
             update_id()
-            os.system('python -m robot 5_workflows_page/test.robot')
+            os.system('python -m robot sprint2/5_workflows_page/test.robot')
         elif opt == '6':
             update_id()
-            os.system('python -m robot 6_workflow_template/test4.robot')
-            os.system('python -m robot 6_workflow_template/crudtest.robot')
+            os.system('python -m robot sprint2/6_workflow_template/test4.robot')
+            os.system('python -m robot sprint2/6_workflow_template/crudtest.robot')
         elif opt == '7':
             update_id()
-            os.system('python -m robot 7_doc_trans/test_doctran.robot')
+            os.system('python -m robot sprint2/7_doc_trans/test_doctran.robot')
         elif opt == 'set-id':
             update_id()
         elif opt == 'clean':
