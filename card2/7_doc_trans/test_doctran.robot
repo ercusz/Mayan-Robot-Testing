@@ -6,8 +6,8 @@ ${BROWSER}    Firefox
 ${SERVER}    localhost
 ${VALID USERNAME}    staff
 ${VALID PASSWORD}    iLoveCP@KKU
-${ID1}    1
-${D_ID1}    5
+${ID1}    5
+${D_ID1}    8
 ${LABEL1}    เวิร์กโฟลว์1
 ${LOGIN PAGE}    http://${SERVER}/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
@@ -96,3 +96,4 @@ Choose Transitions
     Click Element    xpath=//textarea[@name="comment"]
     Wait Until Element Is Visible    xpath://button[@class="btn btn-primary btn-hotkey-default"]
     Click Button    xpath://button[@class="btn btn-primary btn-hotkey-default"]
+    [Teardown]  Close Browser

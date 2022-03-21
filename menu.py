@@ -11,7 +11,7 @@ def fetch_data():
     return res
 
 def fetch_docs_data():
-    url = 'http://localhost/api/v4/workflow_templates/'
+    url = 'http://localhost/api/v4/documents/'
     res = requests.get(url, auth=('admin', 'QUGaFF9fLE'))
     return res
 
