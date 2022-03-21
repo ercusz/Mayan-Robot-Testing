@@ -4,10 +4,10 @@ Library    SeleniumLibrary    timeout=3
 *** Variables ***
 ${SERVER}    localhost
 ${BROWSER}    Firefox
-${ID1}    64
-${ID2}    67
-${ID3}    66
-${ID4}    67
+${ID1}    1
+${ID2}    2
+${ID3}    3
+${ID4}    4
 ${LOGIN PAGE}    http://localhost/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/

@@ -4,7 +4,7 @@ Library    SeleniumLibrary
 *** Variables ***
 ${SERVER}    localhost
 ${BROWSER}    Firefox
-${ID1}    64
+${ID1}    1
 ${LOGIN PAGE}    http://localhost/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/

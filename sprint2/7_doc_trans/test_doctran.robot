@@ -6,8 +6,9 @@ ${BROWSER}    Firefox
 ${SERVER}    localhost
 ${VALID USERNAME}    staff
 ${VALID PASSWORD}    iLoveCP@KKU
-${ID1}    64
-${D_ID1}    23
+${ID1}    1
+${D_ID1}    5
+${LABEL1}    เวิร์กโฟลว์1
 ${LOGIN PAGE}    http://${SERVER}/authentication/login/?next=/home/
 ${HOME PAGE}    http://localhost/#/home/
 ${DOCUMENT TYPES PAGE}    http://localhost/#/documents/document_types/
@@ -15,7 +16,6 @@ ${DOCUMENT TYPES CREATE}    http://localhost/#/documents/document_types/create/
 ${WORKFLOWS DOCUMENT TYPES}    http://localhost/#/workflows/workflow_templates/${ID1}/document_types/
 ${WORKFLOWS TEMPLATE PAGE}    http://localhost/#/workflows/workflow_templates/
 ${DOCUMENT UPLOAD PAGE}    http://localhost/#/sources/documents/create/from/local/multiple/
-
 ${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/${ID1}/preview/
 ${CREATE WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/create/
 ${WORKFLOWS STATES PAGE}    http://localhost/#/workflows/workflow_runtime_proxies/${ID1}/states/
@@ -38,37 +38,24 @@ Login To Home Page
     Click Button    submit
 	Location Should Contain    ${HOME PAGE}    
 
-Go To Document Types Page
-    Wait Until Element Is Visible    xpath://a[contains(text(),"ระบบ")]
-	Click Element    xpath://a[contains(text(),"ระบบ")]
-    Wait Until Element Is Visible    xpath://a[@href="/setup/"]
-    Click Element    xpath://a[@href="/setup/"]
-    Wait Until Element Is Visible    xpath://a[@href="/documents/document_types/"]
-    Click Element    xpath://a[@href="/documents/document_types/"]
+# Go To Document Types Page
+#     Wait Until Element Is Visible    xpath://a[contains(text(),"ระบบ")]
+# 	Click Element    xpath://a[contains(text(),"ระบบ")]
+#     Wait Until Element Is Visible    xpath://a[@href="/setup/"]
+#     Click Element    xpath://a[@href="/setup/"]
+#     Wait Until Element Is Visible    xpath://a[@href="/documents/document_types/"]
+#     Click Element    xpath://a[@href="/documents/document_types/"]
 
-Create Document Types
-    Wait Until Element Is Visible  id:menu-actions
-    Click Element    xpath=//*[@id="menu-actions"]
-    Wait Until Element Is Visible    xpath://a[@href="/documents/document_types/create/"]
-    Click Element    xpath://a[@href="/documents/document_types/create/"]
-    Location Should Be    ${DOCUMENT TYPES CREATE}
-    Input Text    id_label    ประเภทเอกสารสำหรับเวิร์กโฟลว์ไอดี=${ID1}
-    Click Button    submit
-    Wait Until Element Contains    xpath://div[@class="toast-message"]    สร้าง Document type สำเร็จแล้ว
-    Location Should Be    ${DOCUMENT TYPES PAGE}
-
-Go To Workflows Page
-	Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/"]
-	Click Element    xpath://a[@href="/workflows/workflow_templates/"]
-    Location Should Be    ${WORKFLOWS TEMPLATE PAGE}
-
-Add Document Types To Workflow
-    Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/document_types/"]
-    Click Element    xpath://a[@href="/workflows/workflow_templates/${ID1}/document_types/"]
-    Location Should Be    ${WORKFLOWS DOCUMENT TYPES}
-    Wait Until Element Is Visible    xpath://*[contains(text(),"ประเภทเอกสารสำหรับเวิร์กโฟลว์ไอดี=${ID1}")]
-    Double Click Element    xpath://*[contains(text(),"ประเภทเอกสารสำหรับเวิร์กโฟลว์ไอดี=${ID1}")]
-    Wait Until Element Is Visible    xpath://select[@id="id_added-selection"]/*[contains(text(),"ประเภทเอกสารสำหรับเวิร์กโฟลว์ไอดี=${ID1}")]
+# Create Document Types
+#     Wait Until Element Is Visible  id:menu-actions
+#     Click Element    xpath=//*[@id="menu-actions"]
+#     Wait Until Element Is Visible    xpath://a[@href="/documents/document_types/create/"]
+#     Click Element    xpath://a[@href="/documents/document_types/create/"]
+#     Location Should Be    ${DOCUMENT TYPES CREATE}
+#     Input Text    id_label    ประเภทเอกสารสำหรับเวิร์กโฟลว์ไอดี=${ID1}
+#     Click Button    submit
+#     Wait Until Element Contains    xpath://div[@class="toast-message"]    สร้าง Document type สำเร็จแล้ว
+#     Location Should Be    ${DOCUMENT TYPES PAGE}
 
 Add New Document
     Wait Until Element Is Visible    xpath://a[@aria-controls="collapse-documents"]
@@ -78,8 +65,8 @@ Add New Document
     Location Should Be    ${DOCUMENT UPLOAD PAGE}
     Wait Until Element Is Visible    xpath://span[@class="select2-selection select2-selection--single"]
     Click Element    xpath://span[@class="select2-selection select2-selection--single"]
-    Wait Until Element Is Visible    xpath://li[contains(text(),"ประเภทเอกสารสำหรับเวิร์กโฟลว์ไอดี=${ID1}")]
-    Click Element    xpath://li[contains(text(),"ประเภทเอกสารสำหรับเวิร์กโฟลว์ไอดี=${ID1}")]
+    Wait Until Element Is Visible    xpath://li[contains(text(), "${LABEL1}")]
+    Click Element    xpath://li[contains(text(), "${LABEL1}")]
     Wait Until Element Is Visible    xpath://button[@class="btn btn-primary btn-hotkey-default"]
     Click Button    xpath://button[@class="btn btn-primary btn-hotkey-default"]
     Wait Until Element Is Visible    xpath://button[@class="dz-button"]

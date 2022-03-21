@@ -10,11 +10,22 @@ def fetch_data():
     res = requests.get(url, auth=('staff', 'iLoveCP@KKU'))
     return res
 
+def fetch_docs_data():
+    url = 'http://localhost/api/v4/workflow_templates/'
+    res = requests.get(url, auth=('admin', 'QUGaFF9fLE'))
+    return res
+
 def get_list_of_ids(data):
     ids = []
     for x in data:
         ids.append(x['id'])
     return ids
+
+def get_list_of_labels(data):
+    labels = []
+    for x in data:
+        labels.append(x['label'])
+    return labels
 
 def update_id():
     res = fetch_data()
@@ -22,13 +33,28 @@ def update_id():
     if (res.status_code == 200):
         if (data['count'] > 0):
             ids = get_list_of_ids(data['results'])
-            replace_text(ids)
+            labels = get_list_of_labels(data['results'])
+            doc_id = set_docs_id()
+            replace_text(ids, doc_id, labels)
         else:
             print('Workflow not found.')
     else:
         print('fail to fetch data')
 
-def replace_text(id_list):
+def set_docs_id():
+    res = fetch_docs_data()
+    data = res.json()
+    if (res.status_code == 200):
+        if (data['count'] > 0):
+            doc_id = max(get_list_of_ids(data['results']))
+            return doc_id + 1
+        else:
+            return 1
+    else:
+        print('fail to fetch data')
+        exit(0)
+
+def replace_text(id_list, doc_id, labels):
     file_names = [
         'sprint2/3_create_states/sprint3_6.robot', 
         'sprint2/4_create_transitions/sprint3_7_2.robot',
@@ -45,19 +71,23 @@ def replace_text(id_list):
                 prefix2 = "${ID2}    "
                 prefix3 = "${ID3}    "
                 prefix4 = "${ID4}    "
-                # prefix5 = "${D_ID1}    "
+                prefix5 = "${D_ID1}    "
+                prefix6 = "${LABEL1}    "
                 if line.startswith(prefix1):
                     line = prefix1 + str(id_list[0]) + "\n"
                 elif line.startswith(prefix2):
                     line = prefix2 + str(id_list[1]) + "\n"
                 elif line.startswith(prefix3):
                     line = prefix3 + str(id_list[2]) + "\n"
+                elif line.startswith(prefix6):
+                    line = prefix6 + str(labels[0]) + "\n"
                 
                 if (len(id_list) > 3):
                     if line.startswith(prefix4):
                         line = prefix4 + str(id_list[3]) + "\n"
-                # elif line.startswith(prefix5):
-                #     line = prefix5 + str(id_list[0]) + "\n"
+                    elif line.startswith(prefix5):
+                        line = prefix5 + str(doc_id) + "\n"
+
                 print(line, end='')
 
 def main():

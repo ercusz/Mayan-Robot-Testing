@@ -6,7 +6,7 @@ Library     SeleniumLibrary    timeout=3
 ${USER_ID}     staff
 ${USER_PASS}   iLoveCP@KKU
 ${BROWSER}    Firefox
-${ID1}    64
+${ID1}    1
 ${CREATE_FIRST_STATE}    xpath://a[@href="/workflows/workflow_templates/${ID1}/states/create/"]
 ${CREATE_NEXT_STATE}    xpath://a[@href="/workflows/workflow_templates/${ID1}/states/create/"]
 ${URL_BROWSER}    http://localhost/#/workflows/workflow_templates/${ID1}/states/
