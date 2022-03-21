@@ -94,11 +94,11 @@ Go to Create New Theme Page
 
 Input Logo Test
 	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
-	Choose File    id=id_logo_file    ${EXECDIR}${/}..\\resource\\dobby.png
+	Choose File    id=id_logo_file    ${EXECDIR}${/}\\resource\\dobby.png
 
 Input Font Test
 	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
-	Choose File    id=id_font_file    ${EXECDIR}${/}..\\resource\\TA16BIT-Regular.ttf
+	Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\TA16BIT-Regular.ttf
 
 Input Theme Test
     Wait Until Element Is Visible 	xpath://*[@id="id_header_bg"]
