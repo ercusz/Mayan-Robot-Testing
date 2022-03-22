@@ -116,7 +116,7 @@ Input Logo Test
 
 Input Font Test
 	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
-	Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\Taviraj-Regular.ttf #TA16BIT-Regular.ttf
+	Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\Taviraj-Regular.ttf
 
 Input Font Header Test
 	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
