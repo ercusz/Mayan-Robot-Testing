@@ -136,6 +136,9 @@ _ _  _    ___ _  _ ____    _  _ ____ _   _ ____ _  _    ____ _  _ ___  _ ____ __
             os.system('python -m robot card11/9_create_theme/create_theme_test.robot')
         elif opt == '10':
             os.system('python -m robot card11/10_user_theme/user_theme.robot')
+        elif opt == '11':
+            os.system('python -m robot card11/11_invalid_create_theme/Invalid_FileType_Test.robot')
+            os.system('python -m robot card11/11_invalid_create_theme/Invalid_Heading_Text_Font_Size_Test.robot')
         elif opt == 'set-id':
             update_id()
         elif opt == 'clean':
