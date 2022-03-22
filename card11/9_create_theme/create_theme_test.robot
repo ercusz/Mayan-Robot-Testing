@@ -49,7 +49,6 @@ Create Invalid Label Theme #T02
     Input Font Header Test
     Input Text    id_header_text_brand    Dobby
     Input Text    id_header_text_brand_size    20
-    Input Theme Test
     Set Focus To Element    xpath://*[@id="id_label"]
     Page Should Contain    ธีม และ ป้ายกำกับ มีอยู่แล้ว
     Page Should Contain    สร้างธีมใหม่ 

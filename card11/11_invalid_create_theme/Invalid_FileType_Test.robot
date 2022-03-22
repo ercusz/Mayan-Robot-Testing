@@ -59,7 +59,7 @@ Go to Create New Theme Page
 Input Invalid Logo File Type Test
     Select Checkbox    name:default
     Input Text    id_label    Invalid Logo File Type Test 
-    Choose File    id=id_logo_file    D:\\SE\\Srisakdi-Regular.ttf
+    Choose File    id=id_logo_file    ${EXECDIR}${/}\\resource\\Prompt-Regular.ttf
 	Click Button    submit
 	Page Should Contain    อัพโหลดรูปที่ถูกต้อง. ไฟล์ที่อัพโหลดไปไม่ใช่รูป หรือรูปเสียหาย.
 	[Teardown]    Close Browser
@@ -67,7 +67,7 @@ Input Invalid Logo File Type Test
 Input Invalid Font File Type Test
     Select Checkbox    name:default
     Input Text    id_label    Invalid Font File Type Test 
-    Choose File    id=id_font_file    D:\\SE\\kku.png
+    Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\hogwarts.png
 	Click Button    submit
 	Page Should Contain    File extension 'png' is not allowed. Allowed extensions are: 'woff2, woff, ttf, otf'.
 	[Teardown]    Close Browser
@@ -75,9 +75,9 @@ Input Invalid Font File Type Test
 Input Invalid Font Header File Type Test
     Select Checkbox    name:default
     Input Text    id_label    Invalid Font Header File Type Test 
-    Choose File    id=id_font_header_file    D:\\SE\\kku.png
+    Choose File    id=id_font_header_file    ${EXECDIR}${/}\\resource\\dobby_pwned.txt
 	Click Button    submit
-	Page Should Contain    File extension 'png' is not allowed. Allowed extensions are: 'woff2, woff, ttf, otf'.
+	Page Should Contain    File extension 'txt' is not allowed. Allowed extensions are: 'woff2, woff, ttf, otf'.
 	[Teardown]    Close Browser
 
 
