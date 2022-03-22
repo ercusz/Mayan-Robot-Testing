@@ -16,6 +16,51 @@ ${PREVIEW WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/${I
 ${CREATE WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/create/
 
 *** Test Cases ***
+# TC001
+(staff)Editing Workflow
+    Set Delay
+    Open Login Page
+    Login To Home Page
+    Go To Workflows Page
+    Workflow Preview
+    Go to Workflow Template
+    Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/edit/"]
+    Click Element    xpath://a[@href="/workflows/workflow_templates/${ID1}/edit/"]
+    Location Should Contain    http://localhost/#/workflows/workflow_templates/${ID1}/edit/
+    Input Text    id_label    แก้ไขครั้งที่หนึ่ง
+    Input Text    id_internal_name    testround1
+    Input Text    id_start_datetime_0    06/03/2022
+    Input Text    id_start_datetime_1    10:45AM
+    Input Text    id_end_datetime_0    30/03/2022
+    Input Text    id_end_datetime_1    11:59PM
+    Click Button    submit
+    Location Should Contain    http://localhost/#/workflows/workflow_templates/   
+    [Teardown]  Close Browser
+
+# TC002
+(staff2)Find Edit and Delete buttons
+    Set Selenium Speed
+    Open Login Page_2
+    Login To Home Page_2
+    Go To Workflows Page_2
+    Workflow Preview_2
+    Go to Workflow Template_2
+    Element Should Not Be Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/edit/"]
+    Element Should Not Be Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/delete/"]
+
+# TC003
+(staff2)Go to Edit Page
+    Go To    http://localhost/#/workflows/workflow_templates/${ID1}/edit/
+    Wait Until Page Contains    ไม่พบหน้าที่คุณกำลังตามหา
+
+# TC004
+(staff2)Go to Delete Page
+    Go To    http://localhost/#/workflows/workflow_templates/${ID1}/delete/
+    Wait Until Page Contains    ไม่พบหน้าที่คุณกำลังตามหา
+    [Teardown]  Close Browser
+
+
+*** Keywords ***
 Set Delay
     Set Selenium Speed    0.5
 
@@ -48,20 +93,6 @@ Go to Workflow Template
     Click Link    xpath://a[@href="/workflows/workflow_templates/"]
     Location Should Contain  http://localhost/#/workflows/workflow_templates/
 
-Editing Workflow
-    Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/edit/"]
-    Click Element    xpath://a[@href="/workflows/workflow_templates/${ID1}/edit/"]
-    Location Should Contain    http://localhost/#/workflows/workflow_templates/${ID1}/edit/
-    Input Text    id_label    แก้ไขครั้งที่หนึ่ง
-    Input Text    id_internal_name    testround1
-    Input Text    id_start_datetime_0    06/03/2022
-    Input Text    id_start_datetime_1    10:45AM
-    Input Text    id_end_datetime_0    30/03/2022
-    Input Text    id_end_datetime_1    11:59PM
-    Click Button    submit
-    Location Should Contain    http://localhost/#/workflows/workflow_templates/   
-    [Teardown]  Close Browser
-
 Open Login Page_2
 	Open Browser    ${LOGIN PAGE}    ${BROWSER}
 	Location Should Be    ${LOGIN PAGE}
@@ -90,16 +121,3 @@ Go to Workflow Template_2
     Wait Until Element Is Visible    xpath://a[@href="/workflows/workflow_templates/"]
     Click Link    xpath://a[@href="/workflows/workflow_templates/"]
     Location Should Contain  http://localhost/#/workflows/workflow_templates/
-
-Find Edit and Delete buttons
-    Element Should Not Be Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/edit/"]
-    Element Should Not Be Visible    xpath://a[@href="/workflows/workflow_templates/${ID1}/delete/"]
-    
-Go to Edit Page
-    Go To    http://localhost/#/workflows/workflow_templates/${ID1}/edit/
-    Wait Until Page Contains    ไม่พบหน้าที่คุณกำลังตามหา
-
-Go to Delete Page
-    Go To    http://localhost/#/workflows/workflow_templates/${ID1}/delete/
-    Wait Until Page Contains    ไม่พบหน้าที่คุณกำลังตามหา
-    [Teardown]  Close Browser

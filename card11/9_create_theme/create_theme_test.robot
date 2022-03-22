@@ -4,13 +4,15 @@ Library    SeleniumLibrary
 *** Variables ***
 ${USERNAME}     admin
 ${PASSWORD}   QUGaFF9fLE
+${USER_USERNAME}     user
+${USER_PASSWORD}   iLoveCP@KKU
 ${BROWSER}    Firefox
 ${HOME PAGE}    http://localhost/#/home/
 ${CREATE NEW THEME PAGE}    http://localhost/#/appearance/themes/create/
 ${THEME PAGE}    http://localhost/#/appearance/themes/
 ${EDIT THEME}    xpath://a[@href="/appearance/themes/${ID}/edit/"]
-${DELAY}    0.2
-${ID}    1
+${DELAY}    0.3
+${ID}    10
 
 
 *** Test Cases ***
@@ -26,13 +28,16 @@ Create Theme #T01
     Input Text    id_label    Theme Test
     Input Logo Test
     Input Font Test
+    Input Font Header Test
+    Input Text    id_header_text_brand    Dobby
+    Input Text    id_header_text_brand_size    25
     Input Theme Test
-    Page Should Contain    สร้าง ธีม สำเร็จแล้ว
+    Wait Until Element Is Visible    xpath://div[@class="toast-message"]
+    Element Text Should Be    xpath://div[@class="toast-message"]  สร้าง ธีม สำเร็จแล้ว
     Location Should Be    ${THEME PAGE} 
     [Teardown]  Close Browser
 
 Create Invalid Label Theme #T02
-    Set Delay
     Open Browser    ${HOME PAGE}   ${BROWSER}
     Login as a admin
     Go to Create New Theme Page
@@ -41,14 +46,16 @@ Create Invalid Label Theme #T02
     Input Text    id_label    Theme Test
     Input Logo Test
     Input Font Test
+    Input Font Header Test
+    Input Text    id_header_text_brand    Dobby
+    Input Text    id_header_text_brand_size    20
     Input Theme Test
     Set Focus To Element    xpath://*[@id="id_label"]
     Page Should Contain    ธีม และ ป้ายกำกับ มีอยู่แล้ว
     Page Should Contain    สร้างธีมใหม่ 
     [Teardown]  Close Browser
 
-Edit Theme  #T03
-    Set Delay
+Edit Theme #T03
     Open Browser    ${THEME PAGE}   ${BROWSER}
     Login as a admin
     Wait Until Element Is Visible    ${EDIT THEME}
@@ -57,9 +64,20 @@ Edit Theme  #T03
     Input Text    id_label    Edit Theme Test
     Input Edit Logo Test
     Input Edit Font Test
+    Input Edit Header Font Test
+    Input Text    id_header_text_brand    ด๊อบบี้มาแว้วววว
+    Input Text    id_header_text_brand_size    36
     Input Edit Theme Test
-    Page Should Contain    อัปเดต ธีม สำเร็จแล้ว
+    Wait Until Element Is Visible    xpath://div[@class="toast-message"]
+    Element Text Should Be    xpath://div[@class="toast-message"]  อัปเดต ธีม สำเร็จแล้ว
     Location Should Be    ${THEME PAGE} 
+    [Teardown]  Close Browser
+
+User sees the theme admin has changed
+    Open Browser    ${HOME PAGE}   ${BROWSER}
+    Login as a user
+    Input User Theme Test
+    [Teardown]    Close Browser
 
 Delete Theme 
     Set Delay
@@ -94,11 +112,23 @@ Go to Create New Theme Page
 
 Input Logo Test
 	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
-	Choose File    id=id_logo_file    ${EXECDIR}${/}\\resource\\dobby.png
+	Choose File    id=id_logo_file    ${EXECDIR}${/}\\resource\\hogwarts.png
 
 Input Font Test
 	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
-	Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\TA16BIT-Regular.ttf
+	Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\Taviraj-Regular.ttf #TA16BIT-Regular.ttf
+
+Input Font Header Test
+	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
+	Choose File    id=id_font_header_file    ${EXECDIR}${/}\\resource\\TA16BIT-Regular.ttf
+
+Input Invalid Font Test
+	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
+	Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\hogwarts.png
+
+Input Invalid Font Header Test
+	Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
+	Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\dobby_pwned.txt
 
 Input Theme Test
     Wait Until Element Is Visible 	xpath://*[@id="id_header_bg"]
@@ -136,11 +166,15 @@ Input Theme Test
 
 Input Edit Logo Test
     Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
-    Choose File    id=id_logo_file    C:\\Users\\Windows\\Desktop\\MayanG1S2\\dobby.png
+    Choose File    id=id_logo_file    ${EXECDIR}${/}\\resource\\dobby.png
 
 Input Edit Font Test
     Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
-    Choose File    id=id_font_file    C:\\Users\\Windows\\Desktop\\MayanG1S2\\Roboto-Light.ttf
+    Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\TA16BIT-Regular.ttf
+
+Input Edit Header Font Test
+    Checkbox Should Be Selected    xpath=//input[@type="checkbox"]
+    Choose File    id=id_font_file    ${EXECDIR}${/}\\resource\\SOV_wang.ttf
 
 Input Edit Theme Test
     Wait Until Element Is Visible 	xpath://*[@id="id_header_bg"]
@@ -151,4 +185,3 @@ Input Edit Theme Test
 
 Set Delay
     Set Selenium Speed    ${DELAY}
-
