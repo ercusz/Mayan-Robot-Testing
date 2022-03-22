@@ -4,8 +4,8 @@ Library    SeleniumLibrary
 *** Variables ***
 ${BROWSER}    Firefox
 ${SERVER}    localhost
-${ID1}    1
-${ID_NEXT}    5
+${ID1}    10
+${ID_NEXT}    14
 ${VALID USERNAME_1}    staff
 ${VALID USERNAME_2}    staff2
 ${VALID PASSWORD_1}    iLoveCP@KKU
@@ -39,7 +39,7 @@ ${CREATE WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/crea
 
 # TC002
 (staff2)Find Edit and Delete buttons
-    Set Selenium Speed
+    Set Delay
     Open Login Page_2
     Login To Home Page_2
     Go To Workflows Page_2
@@ -62,7 +62,7 @@ ${CREATE WORKFLOWS PAGE}    http://localhost/#/workflows/workflow_templates/crea
 
 *** Keywords ***
 Set Delay
-    Set Selenium Speed    0.5
+    Set Selenium Speed    0.4
 
 Open Login Page
 	Open Browser    ${LOGIN PAGE}    ${BROWSER}
