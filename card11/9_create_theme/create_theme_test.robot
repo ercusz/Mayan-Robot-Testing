@@ -12,7 +12,7 @@ ${CREATE NEW THEME PAGE}    http://localhost/#/appearance/themes/create/
 ${THEME PAGE}    http://localhost/#/appearance/themes/
 ${EDIT THEME}    xpath://a[@href="/appearance/themes/${ID}/edit/"]
 ${DELAY}    0.3
-${ID}    15
+${ID}    23
 
 
 *** Test Cases ***
@@ -48,7 +48,8 @@ Create Invalid Label Theme #T02
     Input Font Test
     Input Font Header Test
     Input Text    id_header_text_brand    Dobby
-    Input Text    id_header_text_brand_size    20
+    Input Text    id_header_text_brand_size    25
+    Click Button    submit
     Set Focus To Element    xpath://*[@id="id_label"]
     Page Should Contain    ธีม และ ป้ายกำกับ มีอยู่แล้ว
     Page Should Contain    สร้างธีมใหม่ 
